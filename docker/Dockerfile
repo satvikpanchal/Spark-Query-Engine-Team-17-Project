@@ -1,5 +1,5 @@
 # --------------------------------------------------------------
-# Dockerfile: Spark, PostgreSQL, Python3, PyTorch (CPU)
+# Dockerfile: Spark, Python3, PyTorch (CPU-only)
 # --------------------------------------------------------------
     FROM ubuntu:20.04
 
@@ -12,7 +12,6 @@
         python3-dev python3-pip \
         software-properties-common \
         gcc g++ make git \
-        postgresql postgresql-contrib \
         libssl-dev \
         && apt-get clean && rm -rf /var/lib/apt/lists/*
     
@@ -21,9 +20,6 @@
         update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
     
     # Install Python libraries
-    # - CPU-only PyTorch (version is an example; you can adjust to current stable release)
-    # - PySpark for Spark integration
-    # - Additional DS/ML libraries as needed
     RUN pip install --no-cache-dir \
         torch==2.0.0 \
         torchvision==0.15.0 \
@@ -46,14 +42,11 @@
         mv /opt/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} $SPARK_HOME && \
         rm /tmp/spark.tgz
     
-    # Expose PostgreSQL and Spark ports
-    EXPOSE 5432 7077 8080 4040
+    # Expose Spark ports
+    EXPOSE 7077 8080 4040
     
     WORKDIR /workdir
     
-    # Optionally copy in your project code, if you have it locally:
-    # COPY . /workdir
-    
-    # Set the default command to a bash shell
+    # CMD
     CMD ["/bin/bash"]
     
