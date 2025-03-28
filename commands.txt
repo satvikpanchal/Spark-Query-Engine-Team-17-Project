@@ -1,0 +1,5 @@
+1. "docker build -t spark-query-project ."
+    - This command builds the updated docker image 
+
+2. "docker run --rm spark-query-project"
+    - This command executes the CMD line within the Dockerfile
