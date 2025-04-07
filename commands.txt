@@ -10,3 +10,7 @@ Debugging:
 
 2. "docker run --rm -it -v "$PWD:/app" spark-query-project"
     - mounting the code from host: changes in local files (in $PWD) are immediately reflected inside the container (no need to rebuild the image. Just rerun)
+
+download links:
+1. idimage.parquet: https://www.dropbox.com/t/ymTRU5CjOPeDqcwH
+2. model weights: https://www.dropbox.com/t/eVtVtGr1OE9f3U4N
