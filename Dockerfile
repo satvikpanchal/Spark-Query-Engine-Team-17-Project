@@ -60,4 +60,6 @@ COPY . /app
 # ----------------------------
 # Default Command
 # ----------------------------
-CMD ["spark-submit", "spark_udfs/hari_sparkquery.py"]
+# CMD ["spark-submit", "inference_udf.py"]
+CMD ["sh", "-c", "spark-submit inference_udf.py > /app/output_log.txt 2>&1 && tail -n 30 /app/output_log.txt"]
+

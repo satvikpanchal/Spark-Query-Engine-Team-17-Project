@@ -1,5 +1,12 @@
 1. "docker build -t spark-query-project ."
-    - This command builds the updated docker image 
+    - This command builds the updated docker image
 
 2. "docker run --rm spark-query-project"
     - This command executes the CMD line within the Dockerfile
+
+
+Debugging:
+1. "docker build --no-cache -t spark-query-project ."
+
+2. "docker run --rm -it -v "$PWD:/app" spark-query-project"
+    - mounting the code from host: changes in local files (in $PWD) are immediately reflected inside the container (no need to rebuild the image. Just rerun)
