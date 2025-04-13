@@ -58,6 +58,9 @@ WORKDIR /app
 COPY . /app
 COPY idimage.parquet /app/idimage.parquet
 COPY fraud_model_weights.pth /app/fraud_model_weights.pth
+COPY idimage.csv /app/idimage.csv
+COPY idlabel.csv /app/idlabel.csv
+COPY idmeta.csv /app/idmeta.csv
 
 # ----------------------------
 # Default Command
