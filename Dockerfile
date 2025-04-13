@@ -52,14 +52,14 @@ RUN wget --no-verbose \
 EXPOSE 7077 8080 4040 8888
 
 # ----------------------------
-# Copy Project Code
+# Copy Project Code and Data
 # ----------------------------
 WORKDIR /app
 COPY . /app
+COPY idimage.parquet /app/idimage.parquet
+COPY fraud_model_weights.pth /app/fraud_model_weights.pth
 
 # ----------------------------
 # Default Command
 # ----------------------------
-# CMD ["spark-submit", "inference_udf.py"]
 CMD ["sh", "-c", "spark-submit inference_udf.py > /app/output_log.txt 2>&1 && tail -n 30 /app/output_log.txt"]
-
